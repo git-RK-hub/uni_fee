@@ -1,10 +1,14 @@
-import './App.css';
+import React from 'react';
+import Form from './ui/form';
+import { ApiContextProvider } from './context';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      University Fee
-    </div>
+    <ApiContextProvider >
+      <div className="App">
+        <Form />
+      </div>
+    </ApiContextProvider>
   );
 }
 
