@@ -80,7 +80,7 @@ const Form = () => {
         {track.length > 0 && (
           <span>Your Selection:&nbsp;  
           {track.map((el, idx) => (
-            <span>{`${el.toLowerCase()} ${idx < track.length-1 ? ' ->' : ''}`}</span>
+            <span key={el}>{`${el.toLowerCase()} ${idx < track.length-1 ? ' ->' : ''}`}</span>
           ))}
           </span>
         )}
