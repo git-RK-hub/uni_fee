@@ -6,7 +6,6 @@ const port = 8000;
 
 let indexFile;
 const requestListener = function (req, res) {
-  console.log('Incoming Request: ', req.url);
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', '*');
   res.setHeader("Content-Type", "application/json");
