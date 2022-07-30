@@ -1,0 +1,21 @@
+{
+  "name": "university_fee",
+  "version": "1.0.0",
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "(cd server && node index.js) & (cd client && npm run start)",
+    "install": "(cd client && npm install)"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/git-RK-hub/uni_fee.git"
+  },
+  "author": "Rishi Kumar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/git-RK-hub/uni_fee/issues"
+  },
+  "homepage": "https://github.com/git-RK-hub/uni_fee#readme"
+}
