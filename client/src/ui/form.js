@@ -14,7 +14,7 @@ const STEPS  = {
 }
 
 const Form = () => {
-  const { data } = useAPI();
+  const { data, isLoading } = useAPI();
   const [step, setStep] = useState(1);
   const [values, setValues]= useState([]);
   const [selectedValues, setSelectedValues] = useState([]);
@@ -70,27 +70,35 @@ const Form = () => {
     setValues(keys);
   }, [data, selectedValues])
 
-  return (
-    <div className='form-container'>
-      <div className="form-container__heading">
-        {STEPS[step] ? `${step}: Select ${STEPS[step]}` : 'Amount'}
+  if(isLoading) {
+    return (
+      <div className="form-container">
+        Please wait while app is loading...
       </div>
-      <StepForm data={values} setValue={handleSelectedValue} amount={amount} />
-      <div className='form-container__tracker'>
-        {track.length > 0 && (
-          <span>Your Selection:&nbsp;  
-          {track.map((el, idx) => (
-            <span key={el}>{`${el.toLowerCase()} ${idx < track.length-1 ? ' ->' : ''}`}</span>
-          ))}
-          </span>
-        )}
+    )
+  } else {
+    return (
+      <div className='form-container'>
+        <div className="form-container__heading">
+          {STEPS[step] ? `${step}: Select ${STEPS[step]}` : 'Amount'}
+        </div>
+        <StepForm data={values} setValue={handleSelectedValue} amount={amount} />
+        <div className='form-container__tracker'>
+          {track.length > 0 && (
+            <span>Your Selection:&nbsp;  
+            {track.map((el, idx) => (
+              <span key={el}>{`${el.toLowerCase()} ${idx < track.length-1 ? ' ->' : ''}`}</span>
+            ))}
+            </span>
+          )}
+        </div>
+        <div className='form-container__buttons'>
+          <button className="form-container__button" onClick={handleReset} disabled={step < 2}>Reset</button>
+          <button className="form-container__button" onClick={handleResetAll} disabled={step < 2}>Reset all</button>
+        </div>
       </div>
-      <div className='form-container__buttons'>
-        <button className="form-container__button" onClick={handleReset} disabled={step < 2}>Reset</button>
-        <button className="form-container__button" onClick={handleResetAll} disabled={step < 2}>Reset all</button>
-      </div>
-    </div>
-  );
+    );
+  }
 }
- 
+
 export default Form;
